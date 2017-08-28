@@ -63,7 +63,7 @@ mod<-RMM.ZOIP(formula.mu=formula.mu,formula.sigma=formula.sigma,formula.p0=formu
 
 library(MASS)
 
-(ajuste <- fitdistr(data_mix$Dias_mora,"exponential"))
+(ajuste <- fitdistr(data_mix$TOTAL_MORA,"exponential"))
 plot(density(rexp(1000,ajuste$estimate)))
 
 par(mfrow=c(1,1))
