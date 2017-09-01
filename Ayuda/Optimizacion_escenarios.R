@@ -6,14 +6,20 @@ colnames(data)<-c('N','ni','n.points','Pruning','intercept.mu','b1.mu',
                   'inter.ran.sigma','logvero','time','iter')
 head(data)
 I<-rep(1:60,each=10)
-datos<-data.frame(I,time=data$time)
+datos<-data.frame(I,time=data$time,Esce=paste(data$ni,data$n.points,data$Pruning))
 head(datos)
-base<-tapply(datos$time,datos$I,mean)
+base<-tapply(datos$time,datos$Esce,mean)
 
 base<-data.frame(tiempo=base,esce=1:60)
 rownames(base)<-1:60
 
+N<-10
+n<-c(5,10,20,30,50,75)
+n.points<-c(3,5,10,15,25)
+pruning<-c(TRUE,FALSE)
 
+escenarios<-expand.grid(N,n,n.points,pruning)
+colnames(escenarios)<-c('N','ni','n.points','pruning')
 
 (base_ord <- base[ do.call(order, base), ])
 
