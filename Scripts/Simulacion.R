@@ -8,13 +8,13 @@ library(ZOIP)
 
 family<-'R-S'
 N<-10
-n<-c(5,10,20,30,50,75)
-n.points<-c(3,5,10,15,25)
+n<-c(5,20,50)
+n.points<-c(3,10,20)
 pruning<-c(TRUE,FALSE)
 
 escenarios<-expand.grid(N,n,n.points,pruning)
 colnames(escenarios)<-c('N','ni','n.points','pruning')
-comb<-c(19,53,27)
+comb<-c(15,18)
 escenarios<-escenarios[comb,]
 dim(escenarios)
 nrep<-1000
@@ -44,7 +44,7 @@ link=c('logit','logit','identity','identity')
 optimizer<-'nlminb'
 
 #-------------------------------------------------------------------
-i<-1
+i<-1                                                                                                                             
 while(i<=dim(escenarios)[1]){
   j<-1
   while(j<=nrep){
@@ -114,7 +114,7 @@ data_i<-as.data.frame(cbind(I=rep(i,nrep),N=rep(escenarios$N[i],nrep),ni=rep(esc
                             pruning=rep(escenarios$pruning[i],nrep),
                             mu.b0,mu.b1,sigma.b0,sigma.b1,p0.b0,p1.b0,random.mu,random.sigma,
                             logvero,time,num.iter))
-write.table(data_i,file='D:\\ZOIP_mix_JUAN.csv',append=TRUE,sep = ",",col.names = FALSE, row.names = FALSE)
+write.table(data_i,file='D:\\ZOIP_mix_JUAN_2.csv',append=TRUE,sep = ",",col.names = FALSE, row.names = FALSE)
 i=i+1
 }
 i
