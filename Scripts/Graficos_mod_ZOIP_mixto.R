@@ -6,8 +6,8 @@ colnames(datos_sim)<-c('N','ni','n_points','pruning','mu_b0','mu_b1','sigma_b0',
                        'sigma_b1','p0_b0','p1_b0','random_mu','random_sigma',
                        'logveromilitud','time','num_iter')
 head(datos_sim)
-datos_sim$pruning2[datos_sim$pruning==0]<-'Sin Pruning'
-datos_sim$pruning2[datos_sim$pruning==1]<-'Con Pruning'
+datos_sim$pruning2[datos_sim$pruning==0]<-'Con Pruning'
+datos_sim$pruning2[datos_sim$pruning==1]<-'Sin Pruning'
 head(datos_sim)
 attach(datos_sim)
 
@@ -33,8 +33,8 @@ Plot_mape_mix<-function(beta_sim,beta_real,main,xlab,ylab){
   dat<-expand.grid(n2,n.points2,pruning3)
   colnames(dat)<-c('ni','n_points','pruning')
   
-  dat$pruning2[dat$pruning==0]<-'Sin Pruning'
-  dat$pruning2[dat$pruning==1]<-'Con Pruning'
+  dat$pruning2[dat$pruning==0]<-'Con Pruning'
+  dat$pruning2[dat$pruning==1]<-'Sin Pruning'
   
   base<-tapply(abs((beta_sim-beta_real)/beta_real),list(ni,n_points,pruning),median)
   
@@ -85,8 +85,8 @@ Plot_mix<-function(var,main,xlab,ylab){
   dat<-expand.grid(n2,n.points2,pruning3)
   colnames(dat)<-c('ni','n_points','pruning')
   
-  dat$pruning2[dat$pruning==0]<-'Sin Pruning'
-  dat$pruning2[dat$pruning==1]<-'Con Pruning'
+  dat$pruning2[dat$pruning==0]<-'Con Pruning'
+  dat$pruning2[dat$pruning==1]<-'Sin Pruning'
   
   base<-tapply(var,list(ni,n_points,pruning),median)
   
@@ -121,3 +121,26 @@ Plot_mix<-function(var,main,xlab,ylab){
 Plot_mix(logveromilitud,main='',xlab='Tamaño muestra por ciudad', ylab='Log-verosimilitud')
 Plot_mix(time,main='',xlab='Tamaño muestra por ciudad', ylab='Mediana tiempo de ejecución')
 Plot_mix(num_iter,main='',xlab='Tamaño muestra por ciudad', ylab='Mediana nro de iteraciones')
+
+tapply(mu_b0,list(n_points,pruning),median)
+tapply(mu_b1,list(n_points,pruning),median)
+tapply(sigma_b0,list(n_points,pruning),median)
+tapply(sigma_b1,list(n_points,pruning),median)
+tapply(p0_b0,list(n_points,pruning),median)
+tapply(p1_b0,list(n_points,pruning),median)
+tapply(random_mu,list(n_points,pruning),median)
+tapply(random_sigma,list(n_points,pruning),median)
+tapply(time,list(n_points,pruning),median)
+tapply(num_iter,list(n_points,pruning),median)
+
+tapply(mu_b0,list(ni,pruning),median)
+tapply(mu_b1,list(ni,pruning),median)
+tapply(random_mu,list(ni,pruning),median)
+tapply(sigma_b0,list(ni,pruning),median)
+tapply(sigma_b1,list(ni,pruning),median)
+tapply(random_sigma,list(ni,pruning),median)
+tapply(p0_b0,list(ni,pruning),median)
+tapply(p1_b0,list(ni,pruning),median)
+tapply(time,list(ni,pruning),median)
+tapply(num_iter,list(ni,pruning),median)
+
