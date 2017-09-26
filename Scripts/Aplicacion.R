@@ -42,7 +42,8 @@ head(data_mix)
 table(data_mix$Ciudad)
 
 par(mfrow=c(1,2))
-plot(density(data_mix$TOTAL_MORA))
+plot(density(data_mix$TOTAL_MORA), main='Distribución empirica \n de la variable Total mora'
+     , ylab='Densidad', xlab='Total mora')
 
 formula.mu=y_i~TOTAL_MORA
 formula.sigma=~TOTAL_MORA
@@ -61,10 +62,13 @@ mod<-RMM.ZOIP(formula.mu=formula.mu,formula.sigma=formula.sigma,formula.p0=formu
               formula.p1=formula.p1,data=data_mix,formula.random=formula.random,link=link,
               family=family,optimizer=optimizer,n.points=n.points,pruning=pruning)
 
+mod
+summary(mod)
 library(MASS)
 
 (ajuste <- fitdistr(data_mix$TOTAL_MORA,"exponential"))
-plot(density(rexp(1000,ajuste$estimate)))
+plot(density(rexp(1000,ajuste$estimate)), main='Distribución exponencial ajustada \n de la variable Total mora'
+     , ylab='Densidad', xlab='Total mora')
 
 par(mfrow=c(1,1))
 plot(data_mix$Dias_mora,data_mix$y_i, col=data_mix$Ciudad)

@@ -54,8 +54,8 @@ Plot_mape_mix<-function(beta_sim,beta_real,main,xlab,ylab){
     i=i+1
   }
 
-xyplot(valor ~ ni | n_points, data = dat,group=pruning2,
-         strip = strip.custom(strip.names = TRUE, strip.levels = TRUE),
+xyplot(valor ~ ni | as.factor(n_points), data = dat,group=pruning2,
+         strip = strip.custom(factor.levels=c('Q=3','Q=10','Q=20'),par.strip.text = list(aspect = "iso",cex = 0.75)),
          type='b',layout = c(3,1),lty=c(1,2),col=c(1,2),lwd=c(1,1),pch=13,main=main,xlab=xlab,ylab=ylab,
          key = list(text=list(levels(as.factor(dat$pruning2))),
                     space = "right",
@@ -105,9 +105,10 @@ Plot_mix<-function(var,main,xlab,ylab){
     }
     i=i+1
   }
-  
-  xyplot(valor ~ ni | n_points, data = dat,group=pruning2,
-         strip = strip.custom(strip.names = TRUE, strip.levels = TRUE),
+
+  xyplot(valor ~ ni | as.factor(n_points), data = dat,group=pruning2,
+	
+         strip = strip.custom(factor.levels=c('Q=3','Q=10','Q=20'),par.strip.text = list(aspect = "iso",cex = 0.75)),
          type='b',layout = c(3,1),lty=c(1,2),col=c(1,2),lwd=c(1,1),pch=13,main=main,xlab=xlab,ylab=ylab,
          key = list(text=list(levels(as.factor(dat$pruning2))),
                     space = "right",
