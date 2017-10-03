@@ -120,7 +120,7 @@ Plot_mix<-function(var,main,xlab,ylab){
 }
 
 Plot_mix(logveromilitud,main='',xlab='Tamaño muestra por ciudad', ylab='Log-verosimilitud')
-Plot_mix(time,main='',xlab='Tamaño muestra por ciudad', ylab='Mediana tiempo de ejecución')
+Plot_mix(time,main='',xlab='Tamaño muestra por ciudad', ylab='Mediana tiempo de ejecución (Seg)')
 Plot_mix(num_iter,main='',xlab='Tamaño muestra por ciudad', ylab='Mediana nro de iteraciones')
 
 tapply(mu_b0,list(n_points,pruning),median)

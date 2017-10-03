@@ -56,7 +56,7 @@ family='R-S'
 
 optimizer<-'nlminb'
 n.points <-11
-pruning <- TRUE
+pruning <- FALSE
 
 mod<-RMM.ZOIP(formula.mu=formula.mu,formula.sigma=formula.sigma,formula.p0=formula.p0,
               formula.p1=formula.p1,data=data_mix,formula.random=formula.random,link=link,
